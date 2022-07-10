@@ -20,10 +20,26 @@ body {
 }
 
 .screen {
+    display: flex;
+    flex-direction: column;
     background-color: aqua;
     border: .1rem solid black;
     flex: 1;
     height: 10vh;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+}
+
+.answer {
+    text-align: right;
+    flex: 2;
+    font-size: 3rem;
+}
+
+.preview {
+    flex: 1;
+    font-size: 1.5rem;
 }
 
 /* Calculator buttons*/
