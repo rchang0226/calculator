@@ -1,0 +1,64 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 95vh;
+}
+
+.container {
+    margin: 5rem;
+    background-color: antiquewhite;
+    border: .2rem solid black;
+}
+
+/* Display Screen */
+.display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.screen {
+    background-color: aqua;
+    border: .1rem solid black;
+    flex: 1;
+    height: 10vh;
+}
+
+/* Calculator buttons*/
+.buttons {
+    display: flex;
+    width: 60vh;
+    height: 60vh;
+    padding: 1rem;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.buttons .column div {
+    display: flex;
+    flex-direction: column;
+    border: .1rem solid black;
+    border-radius: .5rem;
+    margin: .25rem;
+    font-size: 1.5rem;
+    padding: 0.5rem 0.5rem 1rem 0.5rem;
+    transition: all .01s ease;
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    background-color: darkgray;
+    text-shadow: 0 0 .5rem black;
+  }
+
+kdb {
+    flex: none;
+    display: block;
+    font-size: 2rem;
+}
