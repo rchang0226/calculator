@@ -9,6 +9,7 @@ body {
     margin: 5rem;
     background-color: antiquewhite;
     border: .2rem solid black;
+    border-radius: 1rem;
 }
 
 /* Display Screen */
@@ -72,6 +73,16 @@ body {
     background-color: darkgray;
     text-shadow: 0 0 .5rem black;
   }
+
+.hovering {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+}
+
+.buttons .column .pressing {
+    background-color: lightcoral;
+}
 
 kdb {
     flex: none;

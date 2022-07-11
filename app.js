@@ -23,14 +23,35 @@ let op = '';
 let b = '';
 let answer = '';
 
-const buttons = document.querySelectorAll('.number');
-buttons.forEach(button => button.addEventListener('click', handleNumbers));
+const buttons = document.querySelectorAll('.column div');
+buttons.forEach(button => button.addEventListener('mouseover', hover));
+buttons.forEach(button => button.addEventListener('mouseout', stopHover));
+buttons.forEach(button => button.addEventListener('mousedown', press));
+document.body.onmouseup = () => (buttons.forEach(button => button.classList.remove('pressing')));
+
+const numbers = document.querySelectorAll('.number');
+numbers.forEach(number => number.addEventListener('click', handleNumbers));
+
 const operators = document.querySelectorAll('.operator');
 operators.forEach(operator => operator.addEventListener('click', handleOperator));
+
 const equal = document.getElementById('equals');
 equal.addEventListener('click', handleEquals);
+
 const clear = document.getElementById('clear');
 clear.addEventListener('click', doClear);
+
+function hover(e) {
+    this.classList.add('hovering');
+}
+
+function stopHover(e) {
+    this.classList.remove('hovering');
+}
+
+function press(e) {
+    this.classList.add('pressing');
+}
 
 function handleNumbers(e) {
     if (answer) {
