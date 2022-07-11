@@ -131,6 +131,12 @@ function selectOpText(op) {
 }
 
 window.addEventListener('keydown', function (e) {
+    // So the user can use 'enter' instead of '='
+    if (e.key === 'Enter') {
+        handleEquals();
+    }
+
+    // Provide regular keyboard support
     const button = document.getElementById(e.key);
     if (!button) return;
     if (button.classList.contains('number')) {
