@@ -29,6 +29,8 @@ const operators = document.querySelectorAll('.operator');
 operators.forEach(operator => operator.addEventListener('click', handleOperator));
 const equal = document.getElementById('equals');
 equal.addEventListener('click', handleEquals);
+const clear = document.getElementById('clear');
+clear.addEventListener('click', doClear);
 
 function handleNumbers(e) {
     if (answer) {
@@ -79,6 +81,15 @@ function handleEquals(e) {
         console.log(answer);
     }
     updateOutput();
+}
+
+function doClear(e) {
+    a = '';
+    op = '';
+    b = '';
+    answer = '';
+    updateOutput();
+    console.log('clearing');
 }
 
 const output = document.querySelector('.answer');
