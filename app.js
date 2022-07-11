@@ -39,12 +39,10 @@ function handleNumbers(e) {
     if (!op) {
         if (!a) {a = this.id;}
         else {a += this.id;}
-        console.log(a);
     }
     else {
         if (!b) {b = this.id;}
         else {b += this.id;}
-        console.log(b);
     }
     updateOutput();
 }
@@ -59,7 +57,6 @@ function handleOperator(e) {
         handleEquals(e);
         a = answer;
         answer = '';
-        console.log(a);
     }
     switch (this.id) {
         case "plus": op = add; break;
@@ -67,7 +64,6 @@ function handleOperator(e) {
         case "multiply": op = multiply; break;
         case "divide": op = divide;
     }
-    console.log(op);
     updateOutput();
 }
 
@@ -78,7 +74,6 @@ function handleEquals(e) {
         a = '';
         op = '';
         b = '';
-        console.log(answer);
     }
     updateOutput();
 }
@@ -89,7 +84,6 @@ function doClear(e) {
     b = '';
     answer = '';
     updateOutput();
-    console.log('clearing');
 }
 
 const output = document.querySelector('.answer');
