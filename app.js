@@ -18,10 +18,10 @@ function operate(a, op, b) {
     return op(a, b);
 }
 
-let a = null;
-let op = null;
-let b = null;
-let answer = null;
+let a = '';
+let op = '';
+let b = '';
+let answer = '';
 
 const buttons = document.querySelectorAll('.number');
 buttons.forEach(button => button.addEventListener('click', handleNumbers));
@@ -32,7 +32,7 @@ equal.addEventListener('click', handleEquals);
 
 function handleNumbers(e) {
     if (answer) {
-        answer = null;
+        answer = '';
     }
     if (!op) {
         if (!a) {a = this.id;}
@@ -44,18 +44,19 @@ function handleNumbers(e) {
         else {b += this.id;}
         console.log(b);
     }
+    updateOutput();
 }
 
 function handleOperator(e) {
     if (answer) {
         a = answer;
-        answer = null;
+        answer = '';
     }
     if (!a) return;
     if (b) {
         handleEquals(e);
         a = answer;
-        answer = null;
+        answer = '';
         console.log(a);
     }
     switch (this.id) {
@@ -65,14 +66,28 @@ function handleOperator(e) {
         case "divide": op = divide;
     }
     console.log(op);
+    updateOutput();
 }
 
 function handleEquals(e) {
     if (a && op && b) {
         answer = String(operate(Number(a), op, Number(b)));
-        a = null;
-        op = null;
-        b = null;
+        a = '';
+        op = '';
+        b = '';
         console.log(answer);
     }
+    updateOutput();
+}
+
+const output = document.querySelector('.answer');
+function updateOutput() {
+    opText = '';
+    switch(op) {
+        case add: opText = ' + '; break;
+        case subtract: opText = ' - '; break;
+        case multiply: opText = ' * '; break;
+        case divide: opText = ' / '; break;
+    }
+    output.textContent = a + opText + b + answer;
 }
