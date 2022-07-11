@@ -72,6 +72,7 @@ function handleOperator(e) {
 function handleEquals(e) {
     if (a && op && b) {
         answer = String(operate(Number(a), op, Number(b)));
+        updatePreview();
         a = '';
         op = '';
         b = '';
@@ -82,6 +83,17 @@ function handleEquals(e) {
 
 const output = document.querySelector('.answer');
 function updateOutput() {
+    opText = selectOpText(op);
+    output.textContent = a + opText + b + answer;
+}
+
+const preview = document.querySelector('.preview');
+function updatePreview() {
+    opText = selectOpText(op);
+    preview.textContent = a + opText + b + ' = ' + answer;
+}
+
+function selectOpText(op) {
     opText = '';
     switch(op) {
         case add: opText = ' + '; break;
@@ -89,5 +101,5 @@ function updateOutput() {
         case multiply: opText = ' * '; break;
         case divide: opText = ' / '; break;
     }
-    output.textContent = a + opText + b + answer;
+    return opText;
 }
