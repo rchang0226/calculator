@@ -21,6 +21,7 @@ function operate(a, op, b) {
 let a = null;
 let op = null;
 let b = null;
+let answer = null;
 
 const buttons = document.querySelectorAll('.number');
 buttons.forEach(button => button.addEventListener('click', handleNumbers));
@@ -30,6 +31,9 @@ const equal = document.getElementById('equals');
 equal.addEventListener('click', handleEquals);
 
 function handleNumbers(e) {
+    if (answer) {
+        answer = null;
+    }
     if (!op) {
         if (!a) {a = this.id;}
         else {a += this.id;}
@@ -43,8 +47,17 @@ function handleNumbers(e) {
 }
 
 function handleOperator(e) {
+    if (answer) {
+        a = answer;
+        answer = null;
+    }
     if (!a) return;
-    if (b) operate(a, op, b);
+    if (b) {
+        handleEquals(e);
+        a = answer;
+        answer = null;
+        console.log(a);
+    }
     switch (this.id) {
         case "plus": op = add; break;
         case "minus": op = subtract; break;
@@ -56,9 +69,10 @@ function handleOperator(e) {
 
 function handleEquals(e) {
     if (a && op && b) {
-        a = String(operate(Number(a), op, Number(b)));
+        answer = String(operate(Number(a), op, Number(b)));
+        a = null;
         op = null;
         b = null;
-        console.log(a);
+        console.log(answer);
     }
 }
